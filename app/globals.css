@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* FundedDesk design system tokens — https://claude.ai/artifact/Uj1PKRo8y6u5rzVw1LzqiD */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  color-scheme: light;
+
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #F2F3F6;
+  --chip-active: #FFFFFF;
+  --line: #E6E8EC;
+  --ink: #0D1017;
+  --ink-muted: #5E6573;
+  --ink-faint: #A3A9B3;
+  --buy: #2621C9;
+  --on-buy: #FFFFFF;
+  --sell: #7B3FF2;
+  --on-sell: #FFFFFF;
+  --accent-ink: #2621C9;
+  --accent-tint: #ECEBFD;
+  --sell-ink: #5B21D6;
+  --sell-tint: #F1EBFE;
+  --profit: #0B7A54;
+  --profit-tint: #E6F4EE;
+  --loss: #C42B2B;
+  --loss-tint: #FBEAEA;
+  --caution: #9A5B00;
+  --caution-tint: #FDF3E2;
+  --chart-dot: #B4BDC6;
+  --focus-ring: var(--accent-ink);
+
+  --shadow-sheet: 0 -8px 32px rgba(13, 16, 23, 0.10);
+  --shadow-pop: 0 12px 40px rgba(13, 16, 23, 0.16);
+  --shadow-chip: 0 1px 2px rgba(13, 16, 23, 0.08);
+
+  --space-4: 4px;  --space-8: 8px;  --space-12: 12px; --space-16: 16px; --space-20: 20px;
+  --space-24: 24px; --space-28: 28px; --space-32: 32px; --space-40: 40px; --space-48: 48px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --font-sans: var(--font-geist), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Aliases for pages not yet rebuilt on the design system (account, setup, log). */
+  --canvas: var(--surface);
+  --card: var(--surface);
+  --card-alt: var(--surface-sunken);
+  --srf: var(--surface);
+  --srf2: var(--surface-sunken);
+  --border: var(--line);
+  --border2: var(--line);
+  --txt: var(--ink);
+  --txt2: var(--ink-muted);
+  --txt3: var(--ink-muted);
+  --green: var(--profit);
+  --red: var(--loss);
+  --go-color: var(--profit);
+  --go-bg: var(--profit-tint);
+  --go-border: var(--profit-tint);
+  --review-color: var(--caution);
+  --review-bg: var(--caution-tint);
+  --review-border: var(--caution-tint);
+  --stop-color: var(--loss);
+  --stop-bg: var(--loss-tint);
+  --stop-border: var(--loss-tint);
+  --banner-bg: var(--ink);
+  --banner-txt: var(--surface);
+  --banner-txt2: var(--ink-faint);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: dark;
+    --surface: #0A0C11;
+    --surface-raised: #141821;
+    --surface-sunken: #1C212B;
+    --chip-active: #2A303C;
+    --line: #252A35;
+    --ink: #F3F4F7;
+    --ink-muted: #A0A7B4;
+    --ink-faint: #4A5160;
+    --buy: #4F4AF5;
+    --sell: #7C4DFF;
+    --accent-ink: #9C99FF;
+    --accent-tint: #1E1C4A;
+    --sell-ink: #B79CFF;
+    --sell-tint: #241A44;
+    --profit: #3CCB8F;
+    --profit-tint: #0F2A20;
+    --loss: #FF7468;
+    --loss-tint: #33161A;
+    --caution: #F2B045;
+    --caution-tint: #2E220F;
+    --chart-dot: #3A4452;
+    --shadow-sheet: 0 -8px 32px rgba(0, 0, 0, 0.55);
+    --shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.6);
+    --shadow-chip: 0 1px 2px rgba(0, 0, 0, 0.40);
   }
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html { overflow: hidden; }
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+input, select, textarea, button { font-family: inherit; color: inherit; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: var(--radius-pill); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
